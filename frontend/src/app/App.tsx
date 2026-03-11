@@ -9,6 +9,8 @@ import PageTransition from '@/shared/components/PageTransition';
 const DummyDashboard = React.lazy(() => import('@/features/dashboard/pages/Dashboard'));
 const AccountsPage = React.lazy(() => import('@/features/accounts/pages/AccountsPage'));
 const JournalsPage = React.lazy(() => import('@/features/journals/pages/JournalsPage').then(module => ({ default: module.JournalsPage })));
+const InvoicesPage = React.lazy(() => import('@/features/invoices/pages/InvoicesPage').then(module => ({ default: module.InvoicesPage })));
+const BillsPage = React.lazy(() => import('@/features/bills/pages/BillsPage').then(module => ({ default: module.BillsPage })));
 
 const AnimatedRoutes: React.FC = () => {
     const location = useLocation();
@@ -36,6 +38,8 @@ const AnimatedRoutes: React.FC = () => {
                         <Route path="/" element={<PageTransition><DummyDashboard /></PageTransition>} />
                         <Route path="/accounts" element={<PageTransition><AccountsPage /></PageTransition>} />
                         <Route path="/journals" element={<PageTransition><JournalsPage /></PageTransition>} />
+                        <Route path="/invoices" element={<PageTransition><InvoicesPage /></PageTransition>} />
+                        <Route path="/bills" element={<PageTransition><BillsPage /></PageTransition>} />
                         <Route path="*" element={<PageTransition><DummyDashboard /></PageTransition>} />
                     </Route>
                 </Routes>
