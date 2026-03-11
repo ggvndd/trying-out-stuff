@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+uvloop
+orjson
+motor
+pydantic
+pydantic-settings
+slowapi
+httpx
+redis
+fastapi-cache2[redis]
+structlog
+gunicorn
