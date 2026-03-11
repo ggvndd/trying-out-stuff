@@ -8,6 +8,7 @@ import PageTransition from '@/shared/components/PageTransition';
 // Lazy load feature pages for route-level code splitting
 const DummyDashboard = React.lazy(() => import('@/features/dashboard/pages/Dashboard'));
 const AccountsPage = React.lazy(() => import('@/features/accounts/pages/AccountsPage'));
+const JournalsPage = React.lazy(() => import('@/features/journals/pages/JournalsPage').then(module => ({ default: module.JournalsPage })));
 
 const AnimatedRoutes: React.FC = () => {
     const location = useLocation();
@@ -34,6 +35,7 @@ const AnimatedRoutes: React.FC = () => {
                     <Route element={<MainLayout />}>
                         <Route path="/" element={<PageTransition><DummyDashboard /></PageTransition>} />
                         <Route path="/accounts" element={<PageTransition><AccountsPage /></PageTransition>} />
+                        <Route path="/journals" element={<PageTransition><JournalsPage /></PageTransition>} />
                         <Route path="*" element={<PageTransition><DummyDashboard /></PageTransition>} />
                     </Route>
                 </Routes>

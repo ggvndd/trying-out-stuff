@@ -134,8 +134,22 @@ app.add_middleware(
 )
 
 # Example Router Import
-from app.routers import example
-from app.routers import accounts
+from app.routers import example, accounts, journals
 
-app.include_router(example.router, prefix=f"{settings.API_V1_STR}", tags=["Example Endpoints"])
-app.include_router(accounts.router, prefix=f"{settings.API_V1_STR}/accounts", tags=["Chart of Accounts"])
+app.include_router(
+    example.router,
+    prefix="/api/v1/example",
+    tags=["Example"]
+)
+
+app.include_router(
+    accounts.router,
+    prefix="/api/v1/accounts",
+    tags=["Accounts"]
+)
+
+app.include_router(
+    journals.router,
+    prefix="/api/v1/journals",
+    tags=["Journals"]
+)

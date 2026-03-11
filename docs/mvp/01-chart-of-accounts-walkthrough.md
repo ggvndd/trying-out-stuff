@@ -26,11 +26,5 @@ An automated browser session verified the integration end-to-end:
 2.  **API Fetch**: The table successfully requested data from the FastAPI backend and displayed "No accounts found".
 3.  **Data Mutation**: Clicking the "+ New Account" button successfully dispatched a `POST` request to the backend. The backend processed the mock data, and the frontend re-fetched the list to render the newly created asset account in the table automatically.
 
-![Clicking the New Account Button](/Users/gvnd/.gemini/antigravity/brain/6904749a-4b2a-4335-a7a5-46da0083e57b/.system_generated/click_feedback/click_feedback_1773204015649.png)
-
-### Automated Browser Session Recording
-You can view the full automated verification where the agent interacted with the page here:
-![Testing Session](/Users/gvnd/.gemini/antigravity/brain/6904749a-4b2a-4335-a7a5-46da0083e57b/testing_accounts_ui_brave_final_1773204000567.webp)
-
 ## Next Steps
 Now that the foundation (FastAPI + ViteJS + Mock DB) is proven to be correctly wired and serving data, we can move forward with implementing the next module defined in the MVP docs, such as the **Journal Engine** or setting up the real MongoDB connection via Docker.

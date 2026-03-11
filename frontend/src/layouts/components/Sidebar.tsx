@@ -8,7 +8,8 @@ import {
     ChevronRight,
     Settings,
     Briefcase,
-    FileText
+    FileText,
+    BookOpen
 } from 'lucide-react';
 import { NavItem } from '@/types';
 import { useAuth } from '@/features/auth/contexts/AuthContext';
@@ -50,6 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             ]
         },
         { id: 'accounts', label: 'Chart of Accounts', icon: FileText, path: '/accounts' },
+        { id: 'journals', label: 'Journal Entries', icon: BookOpen, path: '/journals' },
         { id: 'settings', label: 'Settings', icon: Settings, path: '/settings' }
     ], []);
 
