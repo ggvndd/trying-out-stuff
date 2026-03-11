@@ -134,7 +134,7 @@ app.add_middleware(
 )
 
 # Example Router Import
-from app.routers import example, accounts, journals
+from app.routers import example, accounts, journals, invoices, bills
 
 app.include_router(
     example.router,
@@ -152,4 +152,16 @@ app.include_router(
     journals.router,
     prefix="/api/v1/journals",
     tags=["Journals"]
+)
+
+app.include_router(
+    invoices.router,
+    prefix="/api/v1/invoices",
+    tags=["Accounts Receivable"]
+)
+
+app.include_router(
+    bills.router,
+    prefix="/api/v1/bills",
+    tags=["Accounts Payable"]
 )

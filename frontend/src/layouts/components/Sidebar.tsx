@@ -9,7 +9,9 @@ import {
     Settings,
     Briefcase,
     FileText,
-    BookOpen
+    BookOpen,
+    Receipt,
+    CreditCard
 } from 'lucide-react';
 import { NavItem } from '@/types';
 import { useAuth } from '@/features/auth/contexts/AuthContext';
@@ -52,6 +54,8 @@ const Sidebar: React.FC<SidebarProps> = ({
         },
         { id: 'accounts', label: 'Chart of Accounts', icon: FileText, path: '/accounts' },
         { id: 'journals', label: 'Journal Entries', icon: BookOpen, path: '/journals' },
+        { id: 'invoices', label: 'Sales Invoices', icon: Receipt, path: '/invoices' },
+        { id: 'bills', label: 'Vendor Bills', icon: CreditCard, path: '/bills' },
         { id: 'settings', label: 'Settings', icon: Settings, path: '/settings' }
     ], []);
 
