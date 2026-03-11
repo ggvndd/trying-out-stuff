@@ -53,10 +53,12 @@ export const JournalFormModal: React.FC<JournalFormModalProps> = ({ isOpen, onCl
     setLines([...lines, { account_id: '', debit: 0, credit: 0, description: '' }]);
   };
 
-  const updateLine = (index: number, field: keyof JournalLineCreate, value: any) => {
-    const newLines = [...lines];
-    newLines[index] = { ...newLines[index], [field]: value };
-    setLines(newLines);
+  const updateLine = (index: number, updates: Partial<JournalLineCreate>) => {
+    setLines(prevLines => {
+      const newLines = [...prevLines];
+      newLines[index] = { ...newLines[index], ...updates };
+      return newLines;
+    });
   };
 
   const removeLine = (index: number) => {
@@ -160,7 +162,7 @@ export const JournalFormModal: React.FC<JournalFormModalProps> = ({ isOpen, onCl
                           <select
                             required
                             value={line.account_id}
-                            onChange={(e) => updateLine(index, 'account_id', e.target.value)}
+                            onChange={(e) => updateLine(index, { account_id: e.target.value })}
                             className="w-full text-sm rounded-lg border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
                           >
                             <option value="" disabled>Select Account</option>
@@ -174,7 +176,7 @@ export const JournalFormModal: React.FC<JournalFormModalProps> = ({ isOpen, onCl
                             type="text"
                             placeholder="Line description (optional)"
                             value={line.description || ''}
-                            onChange={(e) => updateLine(index, 'description', e.target.value)}
+                            onChange={(e) => updateLine(index, { description: e.target.value })}
                             className="w-full text-sm rounded-lg border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
                           />
                         </td>
@@ -185,8 +187,8 @@ export const JournalFormModal: React.FC<JournalFormModalProps> = ({ isOpen, onCl
                             step="0.01"
                             value={line.debit === 0 ? '' : line.debit}
                             onChange={(e) => {
-                                updateLine(index, 'debit', e.target.value === '' ? 0 : parseFloat(e.target.value));
-                                if (parseFloat(e.target.value) > 0) updateLine(index, 'credit', 0);
+                                const val = e.target.value === '' ? 0 : parseFloat(e.target.value);
+                                updateLine(index, { debit: val, credit: val > 0 ? 0 : line.credit });
                             }}
                             className="w-full text-sm text-right rounded-lg border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
                           />
@@ -198,8 +200,8 @@ export const JournalFormModal: React.FC<JournalFormModalProps> = ({ isOpen, onCl
                             step="0.01"
                             value={line.credit === 0 ? '' : line.credit}
                             onChange={(e) => {
-                                updateLine(index, 'credit', e.target.value === '' ? 0 : parseFloat(e.target.value));
-                                if (parseFloat(e.target.value) > 0) updateLine(index, 'debit', 0);
+                                const val = e.target.value === '' ? 0 : parseFloat(e.target.value);
+                                updateLine(index, { credit: val, debit: val > 0 ? 0 : line.debit });
                             }}
                             className="w-full text-sm text-right rounded-lg border-slate-200 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
                           />

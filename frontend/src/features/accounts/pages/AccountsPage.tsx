@@ -64,7 +64,7 @@ const AccountsPage: React.FC = () => {
           </thead>
           <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
             {accounts.map(acc => (
-              <tr key={acc._id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <tr key={acc.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium dark:text-white">{acc.code}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm dark:text-slate-300">{acc.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm dark:text-slate-300 capitalize">{acc.type}</td>
